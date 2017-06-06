@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/thinkful-c11/thomas-nick-mongoose-blog/issues"
   },
-  "homepage": "https://github.com/thinkful-c11/thomas-nick-mongoose-blog#readme"
+  "homepage": "https://github.com/thinkful-c11/thomas-nick-mongoose-blog#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.4",
+    "morgan": "^1.8.2"
+  }
 }
