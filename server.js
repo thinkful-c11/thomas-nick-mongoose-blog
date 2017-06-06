@@ -91,7 +91,17 @@ app.put('/posts/:id', (req, res) => {
     .catch(err => res.status(500).json({message: 'Internal server error '}));
 });
 
+app.delete('/posts/:id', (req, res) => {
+  BlogPost
+    .findByIdAndRemove(req.params.id)
+    .exec()
+    .then(post => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Internal server error.'}));
+});
 
+app.use('*', (req, res) => {
+  res.status(404).json({message: 'Not Found'});
+});
 
 
 
