@@ -1,0 +1,19 @@
+{
+  "name": "thomas-nick-mongoose-blog",
+  "version": "1.0.0",
+  "description": "A mongoose blog api",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkful-c11/thomas-nick-mongoose-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thinkful-c11/thomas-nick-mongoose-blog/issues"
+  },
+  "homepage": "https://github.com/thinkful-c11/thomas-nick-mongoose-blog#readme"
+}
