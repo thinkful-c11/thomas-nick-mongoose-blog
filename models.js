@@ -6,7 +6,8 @@ const blogSchema = mongoose.Schema({
         firstName: {type: String, required: true}, 
         lastName: {type: String, required: true}
     },
-    content: {type: String, required: true}    
+    content: {type: String, required: true},   
+    updated: {type: Date, default: Date.now}
 });
 
 blogSchema.virtual('authorName').get(function() {
@@ -15,14 +16,14 @@ blogSchema.virtual('authorName').get(function() {
 
 blogSchema.methods.apiRepr = function() {
     return {
-        id: this._id,
         title: this.title,
+        content: this.content,
         author: this.authorName,
-        content: this.content
+        created: this.updated
     };
 };
 
 
-const BlogPost = mongoose.model('BlogPost', blogSchema);
+const BlogPost = mongoose.model('BlogPost', blogSchema, 'blogPosts');
 
 module.exports = {BlogPost};
