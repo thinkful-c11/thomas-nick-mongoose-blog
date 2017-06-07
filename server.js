@@ -52,6 +52,23 @@ app.post('/posts', (req, res) => {
     }
   }
 
+  /* Try Catch used here because 'field in req.body.author' will throw a type error **  if req.body.author exists but is sent with no fields
+  **/
+  try {
+    if (req.body.author) {
+      const authorFields = ['firstName', 'lastName'];
+      for (let i = 0; i < authorFields.length; i++) {
+        const field = authorFields[i];
+        if(!(field in req.body.author)) {
+          throw new Error(`Missing ${field} in author property.`);
+        }
+      }
+    }
+  } catch (e) {
+    console.error(e);
+    return res.status(400).send(`Error! ${e}`);
+  }
+
   BlogPost
   .create({
     title: req.body.title,
@@ -75,6 +92,21 @@ app.put('/posts/:id', (req, res) => {
 
   const toUpdate = {};
   const updatableFields = ['title', 'content', 'author'];
+  
+  try {
+    if (req.body.author) {
+      const authorFields = ['firstName', 'lastName'];
+      for (let i = 0; i < authorFields.length; i++) {
+        const field = authorFields[i];
+        if(!(field in req.body.author)) {
+          throw new Error(`Missing ${field} in author property.`);
+        }
+      }
+    }
+  } catch (e) {
+    console.error(e);
+    return res.status(400).send(`Error! ${e}`);
+  }
 
   updatableFields.forEach(field => {
     if (field in req.body) {
